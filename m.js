@@ -1,10 +1,18 @@
-// Add interactivity here if needed
-// Example: Update cart count dynamically
-const cartCount = document.querySelector(".cart-count");
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
 
-function updateCartCount(count) {
-  cartCount.textContent = count;
-}
+// Function to toggle the mobile menu
+mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
 
-// Example usage
-updateCartCount(3); // Update cart count to 3
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.classList.add('shadow-lg');
+        header.classList.remove('shadow-md');
+    } else {
+        header.classList.remove('shadow-lg');
+        header.classList.add('shadow-md');
+    }
+});
