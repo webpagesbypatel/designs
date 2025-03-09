@@ -1,244 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patel's Interior Works</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-      body {
-        font-family: "Roboto", sans-serif;
-      }
-      .title {
-        font-family: "Playfair Display", serif;
-      }
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+        }
     </style>
-  </head>
-  <body class="bg-white text-gray-800">
+</head>
+
+<body class="bg-gray-100 text-gray-800">
     <!-- Header Section -->
-    <header class="header">
-      <h1 class="header-title">Patel Interiors</h1>
-      <nav class="nav">
-        <a href="#" class="nav-link">Home</a>
-        <a href="#" class="nav-link">Shop</a>
-        <a href="#" class="nav-link">About</a>
-        <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" class="nav-link">Contact</a>
-      </nav>
-      <div class="header-icons">
-        <button class="icon-button"><i class="fas fa-user"></i></button>
-        <button class="icon-button">
-          <i class="fas fa-shopping-bag"></i>
-          <span class="cart-count">0</span>
-        </button>
-      </div>
+    <header class="bg-white shadow-md py-4 fixed top-0 w-full z-10">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <h1 class="text-2xl font-bold title">Patel Interiors</h1>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-gray-500 transition-colors">Home</a>
+                <a href="#" class="hover:text-gray-500 transition-colors">Shop</a>
+                <a href="#" class="hover:text-gray-500 transition-colors">About</a>
+                <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" class="hover:text-gray-500 transition-colors">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="hover:text-gray-500 transition-colors focus:outline-none">
+                    <i class="fas fa-user"></i>
+                </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-md py-2 hidden">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="#" class="hover:text-gray-500 transition-colors block py-1">Home</a>
+                <a href="#" class="hover:text-gray-500 transition-colors block py-1">Shop</a>
+                <a href="#" class="hover:text-gray-500 transition-colors block py-1">About</a>
+                <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" class="hover:text-gray-500 transition-colors block py-1">Contact</a>
+            </div>
+        </div>
     </header>
 
     <!-- Main Content -->
-    <main class="main">
-      <!-- Hero Section -->
-      <div class="hero-section flex flex-col md:flex-row items-center">
-        <!-- Hero Image (Left Side) -->
-        <div class="hero-image md:w-1/2">
-          <img
-            src="https://static.wixstatic.com/media/f61af8_cae8ab0ae68d42f8b7bb19777d072acc~mv2_d_7200_4800_s_4_2.jpg/v1/fill/w_950,h_964,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f61af8_cae8ab0ae68d42f8b7bb19777d072acc~mv2_d_7200_4800_s_4_2.jpg"
-            alt="loading"
-            class="w-full h-auto"
-          />
-        </div>
-
-        <!-- Hero Content (Right Side) -->
-        <div class="hero-content md:w-1/2 text-center md:text-left p-8">
-          <p class="hero-subtitle text-lg mb-2">– Explore our unique approach.</p>
-          <h2 class="hero-title text-4xl font-bold mb-4">"Timeless Designs, Modern Elegance"
-            </h2>
-          <button class="hero-button bg-black text-white px-6 py-2">
-            CONTACT
-          </button>
-        </div>
-      </div>
-
-      <!-- Rest of the content remains unchanged -->
-      <!-- Fresh Posters Section -->
-      <div class="container mx-auto px-4 py-8">
-        <div class="text-center mb-12">
-          <h1 class="title text-4xl font-bold mb-2">DESIGN YOUR HOME</h1>
-          <p class="italic text-gray-600 mb-4">ARTS AND MORE</p>
-          <p>
-            "Great design doesn’t just happen. It’s a collaboration of vision, creativity, and expertise."
-
-          </p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Tropical Collection -->
-          <div class="flex flex-col items-center">
-            <div class="bg-blue-100 p-4">
-              <img
-                src="https://static.wixstatic.com/media/22ca97_1ea0b3ad8bfb4c248cda898b622b121b~mv2.jpg/v1/fill/w_625,h_625,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/22ca97_1ea0b3ad8bfb4c248cda898b622b121b~mv2.jpg"
-                alt="Poster with text 'GOOD VIBES ONLY' and tropical leaves"
-                class="mx-auto mb-4"
-                width="300"
-                height="400"
-              />
+    <main class="container mx-auto mt-20">
+        <!-- Hero Section -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-12" data-aos="fade-up"
+            data-aos-duration="1000">
+            <div class="order-2 md:order-1">
+                <p class="text-lg text-gray-600 mb-4">– Explore our unique approach.</p>
+                <h2 class="text-4xl font-bold title mb-6">"Timeless Designs, Modern Elegance"</h2>
+                <button class="bg-gray-500 text-white px-8 py-3 rounded-md hover:bg-gray-600 transition-colors">
+                    CONTACT
+                </button>
             </div>
-            <h2 class="title text-xl font-bold mt-4">TROPICAL COLLECTION</h2>
-            <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" class="text-gray-600 underline mt-2">know more</a>
-          </div>
-          <!-- Z Poster -->
-          <div class="flex flex-col items-center">
-            <div class="relative">
-              <img
-                src="https://static.wixstatic.com/media/22ca97_267a6795c2834354b14273d745757082~mv2.jpg/v1/fill/w_625,h_625,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/22ca97_267a6795c2834354b14273d745757082~mv2.jpg"
-                alt="Poster with letter 'Z' and tropical leaves"
-                class="mx-auto mb-4"
-                width="300"
-                height="300"
-              />
-            
-              <div
-                class="absolute inset-0 border-4 border-black transform translate-x-4 translate-y-4"
-              ></div>
+            <div class="order-1 md:order-2">
+                <img src="https://static.wixstatic.com/media/f61af8_cae8ab0ae68d42f8b7bb19777d072acc~mv2_d_7200_4800_s_4_2.jpg/v1/fill/w_950,h_964,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f61af8_cae8ab0ae68d42f8b7bb19777d072acc~mv2_d_7200_4800_s_4_2.jpg"
+                    alt="Modern Living Room Interior Design" class="w-full rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
             </div>
-            <h2 class="title text-xl font-bold mt-4">TROPICAL COLLECTION</h2>
-            <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" class="text-gray-600 underline mt-2">know more</a>
-          </div>
-            </div>
-            
-          </div>
-          
-        </div>
-        
-        <!-- Freedom Collection -->
-        <div class="flex flex-col items-center mt-8">
-          <div class="bg-beige-100 p-4">
-            <img
-              src="https://static.wixstatic.com/media/22ca97_936597ebdfab49c08ee5695b10c313fd~mv2.jpg/v1/fill/w_560,h_689,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Untitled%20design%20(16).jpg"
-              alt="Poster with text 'COCO' and coconuts with tropical leaves"
-              class="mx-auto mb-4"
-              width="300"
-              height="400"
-            />
-          </div>
-          <h2 class="title text-xl font-bold mt-4">ELEGANT DESIGNS</h2>
-          <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" class="text-gray-600 underline mt-2">know more</a>
-        </div>
-      </div>
+        </section>
 
-      <!-- Promotions Section -->
-      <div class="promotions">
-        <div class="promotion-card">
-          <img
-            src="https://storage.googleapis.com/a1aa/image/Lr3dLMRnOUFwJ9XQB4vVmUkMEwuasYXVXlmA9rgf4Ow.jpg"
-            alt="Peach background with leaf pattern"
-          />
-          <div class="promotion-content">
-            <p class="promotion-subtitle"> </p>
-            <h2 class="promotion-title"> Your dream home is just a design away.</h2>
-            <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" class="promotion-link">know more</a>
-          </div>
-        </div>
-        <div class="promotion-card">
-          <img
-            src="https://storage.googleapis.com/a1aa/image/90y16jkAM8HEYQLrZrUiDT1MnKY3OV5j4zz3XjDNLU0.jpg"
-            alt="Light gray background with vertical lines pattern"
-          />
-          <div class="promotion-content">
-            <p class="promotion-subtitle">Don't Miss</p>
-            <h2 class="promotion-title">40% OFF ON DESIGNS</h2>
-            <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" class="promotion-button">contact</a>
-          </div>
-        </div>
-      </div>
+        <!-- Our Collections -->
+        <section class="py-12">
+            <h2 class="text-3xl font-bold title text-center mb-8" data-aos="fade-down" data-aos-duration="1000">Our
+                Collections</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tropical Collection -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                    data-aos="fade-up" data-aos-duration="1000">
+                    <img src="https://www.epsinteriorindustries.com/wp-content/uploads/2021/08/living-room-interior-design.jpg"
+                        alt="Poster with text 'GOOD VIBES ONLY' and tropical leaves" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold title mb-2">Tropical Collection</h3>
+                        <p class="text-gray-600">Bring the tropics into your home with these vibrant designs.</p>
+                        <a href="https://wa.me/qr/Y4PJFP3TQZHJM1"
+                            class="text-gray-500 hover:text-gray-600 transition-colors block mt-4">Know More</a>
+                    </div>
+                </div>
+                <!-- Z Poster -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                    data-aos="fade-up" data-aos-duration="1200">
+                    <div class="relative">
+                        <img src="https://wallpaperaccess.com/full/1344497.jpg"
+                            alt="Poster with letter 'Z' and tropical leaves" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+                        <div
+                            class="absolute inset-0 border-4 border-black transform translate-x-4 translate-y-4">
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold title mb-2">Z Poster</h3>
+                        <p class="text-gray-600">Add a modern touch with this stylish 'Z' poster.</p>
+                        <a href="https://wa.me/qr/Y4PJFP3TQZHJM1"
+                            class="text-gray-500 hover:text-gray-600 transition-colors block mt-4">Know More</a>
+                    </div>
+                </div>
+                <!-- Elegant Designs -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                    data-aos="fade-up" data-aos-duration="1400">
+                    <img src="https://1.bp.blogspot.com/-hisc0tV8MPs/UwLw7xgdr5I/AAAAAAAAGsA/M64vUZTDx4g/s1600/Screen+Shot+2014-02-17+at+9.29.59+PM.png"
+                        alt="Poster with text 'COCO' and coconuts with tropical leaves" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold title mb-2">Elegant Designs</h3>
+                        <p class="text-gray-600">Elevate your space with these elegant and sophisticated designs.</p>
+                        <a href="https://wa.me/qr/Y4PJFP3TQZHJM1"
+                            class="text-gray-500 hover:text-gray-600 transition-colors block mt-4">Know More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <!-- Interior Works Section -->
-      <div class="container mx-auto px-4 py-8">
-        <h1 class="text-center text-2xl font-light mb-8">
-          Patel's Interior Works
-        </h1>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 mb-8">
-          <div class="col-span-1">
-            <img
-              src=" https://www.kateandlaurel.com/cdn/shop/products/wrnsc32wzmtwdhfcsdvb.jpg?v=1679160237"
-              alt="Interior design artwork with watermelon and leaves"
-               
-              height="300"
-              width="400"
-            />
-          </div>
-          <div class="col-span-1">
-            <img
-              src="https://c.pxhere.com/photos/56/3d/candle_close_up_dining_table_laptop_laptops_table_wooden_table-930232.jpg!s2"
-              alt="Dining table setup with framed artwork in the background"
-              
-              height="300"
-              width="400"
-            />
-          </div>
-          <div class="col-span-1">
-            <img
-              src="https://5.imimg.com/data5/SELLER/Default/2024/10/460808897/VQ/ZB/UF/2802499/zz-500x500.jpg"
-              alt="Two framed artworks with palm leaves and pineapples"
-               
-              height="300"
-              width="400"
-            />
-          </div>
-        </div>
-        <div class="text-center mb-8">
-          <p class="mb-4">
-            Subscribe and stay on top of our latest news and promotions
-          </p>
-          <form class="max-w-md mx-auto">
-            <div class="mb-4">
-              <label class="block text-left mb-2" for="email">Email *</label>
-              <input
-                class="w-full border border-gray-300 p-2"
-                id="email"
-                required
-                type="email"
-              />
+        <!-- Promotions Section -->
+        <section class="py-12">
+            <h2 class="text-3xl font-bold title text-center mb-8" data-aos="fade-down" data-aos-duration="1000">
+                Promotions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+                    data-aos="fade-left" data-aos-duration="1000">
+                    <img src="https://storage.googleapis.com/a1aa/image/Lr3dLMRnOUFwJ9XQB4vVmUkMEwuasYXVXlmA9rgf4Ow.jpg"
+                        alt="Peach background with leaf pattern" class="w-full h-64 object-cover">
+                    <div
+                        class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 text-white">
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold mb-2">Your dream home is just a design away.</h3>
+                            <a href="https://wa.me/qr/Y4PJFP3TQZHJM1"
+                                class="bg-white text-gray-500 px-6 py-2 rounded-md hover:bg-gray-100 transition-colors">Know
+                                More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+                    data-aos="fade-right" data-aos-duration="1000">
+                    <img src="https://storage.googleapis.com/a1aa/image/90y16jkAM8HEYQLrZrUiDT1MnKY3OV5j4zz3XjDNLU0.jpg"
+                        alt="Light gray background with vertical lines pattern" class="w-full h-64 object-cover">
+                    <div
+                        class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 text-white">
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold mb-2">40% OFF ON DESIGNS</h3>
+                            <a href="https://wa.me/qr/Y4PJFP3TQZHJM1"
+                                class="bg-white text-gray-500 px-6 py-2 rounded-md hover:bg-gray-100 transition-colors">Contact</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mb-4 text-left">
-              <input class="mr-2" id="subscribe" type="checkbox" />
-              <label for="subscribe"
-                >Yes, subscribe me to your newsletter.</label
-              >
+        </section>
+
+        <!-- Interior Works Section -->
+        <section class="py-12">
+            <h2 class="text-3xl font-bold title text-center mb-8" data-aos="fade-down" data-aos-duration="1000">
+                Interior Works Showcase</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <img src="https://www.kateandlaurel.com/cdn/shop/products/wrnsc32wzmtwdhfcsdvb.jpg?v=1679160237"
+                    alt="Interior design artwork with watermelon and leaves" class="w-full h-48 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+                    data-aos="zoom-in" data-aos-duration="1000">
+                <img src="https://c.pxhere.com/photos/56/3d/candle_close_up_dining_table_laptop_laptops_table_wooden_table-930232.jpg!s2"
+                    alt="Dining table setup with framed artwork in the background" class="w-full h-48 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+                    data-aos="zoom-in" data-aos-duration="1200">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2024/10/460808897/VQ/ZB/UF/2802499/zz-500x500.jpg"
+                    alt="Two framed artworks with palm leaves and pineapples" class="w-full h-48 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+                    data-aos="zoom-in" data-aos-duration="1400">
             </div>
-            <button class="bg-pink-800 text-white px-4 py-2" type="submit">
-              Subscribe
-            </button>
-          </form>
-        </div>
-        <div class="text-center mb-8">
-          <a class="mx-2 text-gray-600" href="https://www.facebook.com/share/1MvhYEA1dH/"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-          <a class="mx-2 text-gray-600" href="https://x.com/Susheel6744777?t=mfz0dz01fj4hjfsIcPzvJQ&s=08"
-            ><i class="fab fa-twitter"></i
-          ></a>
-          <a
-            class="mx-2 text-gray-600"
-            href="https://www.instagram.com/classy___97/#"
-            ><i class="fab fa-instagram"></i
-          ></a>
-        </div>
-        <div class="text-center text-gray-600">
-          <p>
-            © 2025 ALL RIGHTS RESERVED. Powered and secured by
-            <a class="text-gray-800 underline" href="#">@patel webpages</a>
-          </p>
-        </div>
-      </div>
+        </section>
+
+        <!-- Subscription Form -->
+        <section class="py-12">
+            <h2 class="text-2xl font-semibold text-center mb-4" data-aos="fade-down" data-aos-duration="1000">Subscribe
+                to Our Newsletter</h2>
+            <p class="text-gray-600 text-center mb-6">Stay up-to-date with the latest news and promotions.</p>
+            <form class="max-w-md mx-auto" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email *</label>
+                    <input type="email" id="email"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        required>
+                </div>
+                <div class="mb-6 flex items-center">
+                    <input type="checkbox" id="subscribe" class="mr-2">
+                    <label for="subscribe" class="text-gray-700 text-sm">Yes, subscribe me to your newsletter.</label>
+                </div>
+                <button
+                    class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit">
+                    Subscribe
+                </button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-white py-6">
+            <div class="container mx-auto px-4 text-center">
+                <div class="mb-4">
+                    <a href="https://www.facebook.com/share/1MvhYEA1dH/" class="text-gray-600 hover:text-gray-500 mx-2"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/Susheel6744777?t=mfz0dz01fj4hjfsIcPzvJQ&s=08"
+                        class="text-gray-600 hover:text-gray-500 mx-2"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/classy___97/#" class="text-gray-600 hover:text-gray-500 mx-2"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+                <p class="text-gray-600">© 2024 ALL RIGHTS RESERVED. Powered and secured by <a
+                        href="#" class="text-gray-500 hover:underline">@patel webpages</a></p>
+            </div>
+        </footer>
     </main>
 
     <script src="m.js"></script>
-  </body>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
 </html>
