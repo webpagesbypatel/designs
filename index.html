@@ -5,222 +5,340 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patel's Interior Works</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet">
+    <!-- AOS CSS (Animation on Scroll) -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
+        html {
+             /* Smooth scrolling for anchor links */
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Roboto', sans-serif;
+            @apply bg-gray-100 text-gray-800; /* Moved from body tag for cleaner HTML */
         }
-
         .title {
             font-family: 'Playfair Display', serif;
+        }
+        /* Add custom transition class for mobile menu if needed */
+        .mobile-menu-transition {
+             transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+         /* Styling for the card image zoom effect */
+        .card-image {
+            transition: transform 0.3s ease-in-out;
+        }
+        .group:hover .card-image {
+            transform: scale(1.05);
+        }
+         /* Adding subtle transitions to links */
+        nav a, footer a, .hover-link {
+            transition: color 0.3s ease-in-out;
+        }
+         /* Button transitions */
+        button, .button-link {
+             transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+        button:hover, .button-link:hover {
+            transform: translateY(-2px); /* Subtle lift effect */
+        }
+        button:active, .button-link:active {
+            transform: translateY(0px); /* Press effect */
         }
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body>
     <!-- Header Section -->
-    <header class="bg-white shadow-md py-4 fixed top-0 w-full z-10">
-        <div class="container mx-auto px-4 flex items-center justify-between">
-            <h1 class="text-2xl font-bold title">Patel Interiors</h1>
+    <header class="bg-white shadow-md py-4 fixed top-0 w-full z-50 transition-shadow duration-300 ease-in-out">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <a href="#" class="text-2xl font-bold title">Patel Interiors</a>
             <nav class="hidden md:flex space-x-6">
-                <a href="#" class="hover:text-gray-500 transition-colors">Home</a>
-                <a href="#" class="hover:text-gray-500 transition-colors">Shop</a>
-                <a href="#" class="hover:text-gray-500 transition-colors">About</a>
-                <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" class="hover:text-gray-500 transition-colors">Contact</a>
+                <a href="#home" class="hover:text-gray-500">Home</a>
+                <a href="#collections" class="hover:text-gray-500">Collections</a>
+                <a href="#about" class="hover:text-gray-500">About</a>
+                <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" target="_blank" rel="noopener noreferrer" class="hover:text-gray-500">Contact</a>
             </nav>
             <div class="flex items-center space-x-4">
-                <button class="hover:text-gray-500 transition-colors focus:outline-none">
+                <button aria-label="User Account" class="hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 rounded-full p-1">
                     <i class="fas fa-user"></i>
                 </button>
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <button id="mobile-menu-button" aria-label="Toggle Menu" class="md:hidden focus:outline-none focus:ring-2 focus:ring-gray-400 rounded p-1">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="md:hidden bg-white shadow-md py-2 hidden">
-            <div class="container mx-auto px-4 flex flex-col space-y-3">
-                <a href="#" class="hover:text-gray-500 transition-colors block py-1">Home</a>
-                <a href="#" class="hover:text-gray-500 transition-colors block py-1">Shop</a>
-                <a href="#" class="hover:text-gray-500 transition-colors block py-1">About</a>
-                <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" class="hover:text-gray-500 transition-colors block py-1">Contact</a>
+        <!-- Mobile Menu (Hidden by default, transitions can be improved with JS adding/removing classes for transform/opacity) -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg hidden overflow-hidden">
+            <!-- Using px-4 sm:px-6 lg:px-8 consistently -->
+            <div class="px-4 pt-2 pb-4 sm:px-6 lg:px-8 flex flex-col space-y-3">
+                <a href="#home" class="hover:text-gray-500 block py-1">Home</a>
+                <a href="#collections" class="hover:text-gray-500 block py-1">Collections</a>
+                <a href="#about" class="hover:text-gray-500 block py-1">About</a>
+                <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" target="_blank" rel="noopener noreferrer" class="hover:text-gray-500 block py-1">Contact</a>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto mt-20">
-        <!-- Hero Section -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-12" data-aos="fade-up"
-            data-aos-duration="1000">
-            <div class="order-2 md:order-1">
+    <!-- Added consistent padding: px-4 sm:px-6 lg:px-8 -->
+    <main class="container mx-auto mt-24 px-4 sm:px-6 lg:px-8">
+        <!-- Hero Section (id added for navigation) -->
+        <section id="home" class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center py-12 md:py-16 overflow-hidden">
+            <!-- Adjusted order for better flow on mobile -->
+            <div class="order-2 md:order-1" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                 <p class="text-lg text-gray-600 mb-4">– Explore our unique approach.</p>
-                <h2 class="text-4xl font-bold title mb-6">"Timeless Designs, Modern Elegance"</h2>
-                <button class="bg-gray-500 text-white px-8 py-3 rounded-md hover:bg-gray-600 transition-colors">
-                    CONTACT
-                </button>
+                <h2 class="text-4xl lg:text-5xl font-bold title mb-6">"Timeless Designs, Modern Elegance"</h2>
+                <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" target="_blank" rel="noopener noreferrer" class="button-link inline-block bg-gray-600 text-white px-8 py-3 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 shadow-md hover:shadow-lg">
+                    CONTACT US
+                </a>
             </div>
-            <div class="order-1 md:order-2">
-                <img src="https://static.wixstatic.com/media/f61af8_cae8ab0ae68d42f8b7bb19777d072acc~mv2_d_7200_4800_s_4_2.jpg/v1/fill/w_950,h_964,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f61af8_cae8ab0ae68d42f8b7bb19777d072acc~mv2_d_7200_4800_s_4_2.jpg"
-                    alt="Modern Living Room Interior Design" class="w-full rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+            <div class="order-1 md:order-2" data-aos="fade-left" data-aos-duration="1000">
+                 <!-- Using group for contained hover effect -->
+                <div class="rounded-lg shadow-lg overflow-hidden group">
+                     <img src="https://static.wixstatic.com/media/f61af8_cae8ab0ae68d42f8b7bb19777d072acc~mv2_d_7200_4800_s_4_2.jpg/v1/fill/w_950,h_964,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f61af8_cae8ab0ae68d42f8b7bb19777d072acc~mv2_d_7200_4800_s_4_2.jpg"
+                         alt="Modern Living Room Interior Design by Patel Interiors" class="w-full h-auto object-cover card-image">
+                 </div>
             </div>
         </section>
 
-        <!-- Our Collections -->
-        <section class="py-12">
-            <h2 class="text-3xl font-bold title text-center mb-8" data-aos="fade-down" data-aos-duration="1000">Our
+        <!-- Our Collections (id added for navigation) -->
+        <section id="collections" class="py-12 md:py-16">
+            <h2 class="text-3xl lg:text-4xl font-bold title text-center mb-10 md:mb-12" data-aos="fade-up" data-aos-duration="800">Our
                 Collections</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Tropical Collection -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                    data-aos="fade-up" data-aos-duration="1000">
-                    <img src="https://www.epsinteriorindustries.com/wp-content/uploads/2021/08/living-room-interior-design.jpg"
-                        alt="Poster with text 'GOOD VIBES ONLY' and tropical leaves" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
-                    <div class="p-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <!-- Collection Item 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="overflow-hidden">
+                        <img src="https://www.epsinteriorindustries.com/wp-content/uploads/2021/08/living-room-interior-design.jpg"
+                            alt="Tropical Collection Living Room" class="w-full h-64 object-cover card-image">
+                    </div>
+                    <div class="p-5">
                         <h3 class="text-xl font-semibold title mb-2">Tropical Collection</h3>
-                        <p class="text-gray-600">Bring the tropics into your home with these vibrant designs.</p>
-                        <a href="https://wa.me/qr/Y4PJFP3TQZHJM1"
-                            class="text-gray-500 hover:text-gray-600 transition-colors block mt-4">Know More</a>
+                        <p class="text-gray-600 mb-4">Bring the tropics into your home with these vibrant designs.</p>
+                        <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" target="_blank" rel="noopener noreferrer"
+                            class="text-gray-600 hover:text-gray-900 font-medium hover-link block">Know More <i class="fas fa-arrow-right text-xs ml-1"></i></a>
                     </div>
                 </div>
-                <!-- Z Poster -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                    data-aos="fade-up" data-aos-duration="1200">
-                    <div class="relative">
+                <!-- Collection Item 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <!-- Added relative positioning for potential decorative elements if needed -->
+                    <div class="relative overflow-hidden">
                         <img src="https://wallpaperaccess.com/full/1344497.jpg"
-                            alt="Poster with letter 'Z' and tropical leaves" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
-                        <div
-                            class="absolute inset-0 border-4 border-black transform translate-x-4 translate-y-4">
-                        </div>
+                            alt="Modern Z Poster Design" class="w-full h-64 object-cover card-image">
+                         <!-- Removed the overlapping border for cleaner look, can be re-added if desired -->
+                         <!-- <div class="absolute inset-0 border-4 border-black transform translate-x-4 translate-y-4"></div> -->
                     </div>
-                    <div class="p-4">
+                    <div class="p-5">
                         <h3 class="text-xl font-semibold title mb-2">Z Poster</h3>
-                        <p class="text-gray-600">Add a modern touch with this stylish 'Z' poster.</p>
-                        <a href="https://wa.me/qr/Y4PJFP3TQZHJM1"
-                            class="text-gray-500 hover:text-gray-600 transition-colors block mt-4">Know More</a>
+                        <p class="text-gray-600 mb-4">Add a modern touch with this stylish 'Z' poster.</p>
+                        <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" target="_blank" rel="noopener noreferrer"
+                            class="text-gray-600 hover:text-gray-900 font-medium hover-link block">Know More <i class="fas fa-arrow-right text-xs ml-1"></i></a>
                     </div>
                 </div>
-                <!-- Elegant Designs -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                    data-aos="fade-up" data-aos-duration="1400">
-                    <img src="https://1.bp.blogspot.com/-hisc0tV8MPs/UwLw7xgdr5I/AAAAAAAAGsA/M64vUZTDx4g/s1600/Screen+Shot+2014-02-17+at+9.29.59+PM.png"
-                        alt="Poster with text 'COCO' and coconuts with tropical leaves" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
-                    <div class="p-4">
+                <!-- Collection Item 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                     <div class="overflow-hidden">
+                        <img src="https://1.bp.blogspot.com/-hisc0tV8MPs/UwLw7xgdr5I/AAAAAAAAGsA/M64vUZTDx4g/s1600/Screen+Shot+2014-02-17+at+9.29.59+PM.png"
+                            alt="Elegant COCO Design Poster" class="w-full h-64 object-cover card-image">
+                     </div>
+                    <div class="p-5">
                         <h3 class="text-xl font-semibold title mb-2">Elegant Designs</h3>
-                        <p class="text-gray-600">Elevate your space with these elegant and sophisticated designs.</p>
-                        <a href="https://wa.me/qr/Y4PJFP3TQZHJM1"
-                            class="text-gray-500 hover:text-gray-600 transition-colors block mt-4">Know More</a>
+                        <p class="text-gray-600 mb-4">Elevate your space with these elegant and sophisticated designs.</p>
+                        <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" target="_blank" rel="noopener noreferrer"
+                            class="text-gray-600 hover:text-gray-900 font-medium hover-link block">Know More <i class="fas fa-arrow-right text-xs ml-1"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Promotions Section -->
-        <section class="py-12">
-            <h2 class="text-3xl font-bold title text-center mb-8" data-aos="fade-down" data-aos-duration="1000">
+        <section class="py-12 md:py-16">
+            <h2 class="text-3xl lg:text-4xl font-bold title text-center mb-10 md:mb-12" data-aos="fade-up" data-aos-duration="800">
                 Promotions</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
-                    data-aos="fade-left" data-aos-duration="1000">
-                    <img src="https://storage.googleapis.com/a1aa/image/Lr3dLMRnOUFwJ9XQB4vVmUkMEwuasYXVXlmA9rgf4Ow.jpg"
-                        alt="Peach background with leaf pattern" class="w-full h-64 object-cover">
-                    <div
-                        class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 text-white">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+                <!-- Promotion 1 -->
+                <div class="relative rounded-lg overflow-hidden shadow-lg group"
+                    data-aos="zoom-in-right" data-aos-duration="1000">
+                     <img src="https://storage.googleapis.com/a1aa/image/Lr3dLMRnOUFwJ9XQB4vVmUkMEwuasYXVXlmA9rgf4Ow.jpg"
+                        alt="Peach background promotion" class="w-full h-72 object-cover card-image">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white p-6">
                         <div class="text-center">
-                            <h3 class="text-2xl font-bold mb-2">Your dream home is just a design away.</h3>
-                            <a href="https://wa.me/qr/Y4PJFP3TQZHJM1"
-                                class="bg-white text-gray-500 px-6 py-2 rounded-md hover:bg-gray-100 transition-colors">Know
-                                More</a>
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-4">Your dream home is just a design away.</h3>
+                            <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" target="_blank" rel="noopener noreferrer"
+                                class="button-link inline-block bg-white text-gray-800 px-6 py-2 rounded-md hover:bg-gray-200 font-semibold">
+                                Know More
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
-                    data-aos="fade-right" data-aos-duration="1000">
+                 <!-- Promotion 2 -->
+                <div class="relative rounded-lg overflow-hidden shadow-lg group"
+                    data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="100">
                     <img src="https://storage.googleapis.com/a1aa/image/90y16jkAM8HEYQLrZrUiDT1MnKY3OV5j4zz3XjDNLU0.jpg"
-                        alt="Light gray background with vertical lines pattern" class="w-full h-64 object-cover">
-                    <div
-                        class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 text-white">
+                        alt="40% off promotion background" class="w-full h-72 object-cover card-image">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white p-6">
                         <div class="text-center">
-                            <h3 class="text-2xl font-bold mb-2">40% OFF ON DESIGNS</h3>
-                            <a href="https://wa.me/qr/Y4PJFP3TQZHJM1"
-                                class="bg-white text-gray-500 px-6 py-2 rounded-md hover:bg-gray-100 transition-colors">Contact</a>
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-4">40% OFF ON DESIGNS</h3>
+                             <a href="https://wa.me/qr/Y4PJFP3TQZHJM1" target="_blank" rel="noopener noreferrer"
+                                class="button-link inline-block bg-white text-gray-800 px-6 py-2 rounded-md hover:bg-gray-200 font-semibold">
+                                Contact Us
+                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Interior Works Section -->
-        <section class="py-12">
-            <h2 class="text-3xl font-bold title text-center mb-8" data-aos="fade-down" data-aos-duration="1000">
+        <!-- Interior Works Showcase Section (id added for potential nav link) -->
+        <section id="about" class="py-12 md:py-16">
+            <h2 class="text-3xl lg:text-4xl font-bold title text-center mb-10 md:mb-12" data-aos="fade-up" data-aos-duration="800">
                 Interior Works Showcase</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <img src="https://www.kateandlaurel.com/cdn/shop/products/wrnsc32wzmtwdhfcsdvb.jpg?v=1679160237"
-                    alt="Interior design artwork with watermelon and leaves" class="w-full h-48 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
-                    data-aos="zoom-in" data-aos-duration="1000">
-                <img src="https://c.pxhere.com/photos/56/3d/candle_close_up_dining_table_laptop_laptops_table_wooden_table-930232.jpg!s2"
-                    alt="Dining table setup with framed artwork in the background" class="w-full h-48 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
-                    data-aos="zoom-in" data-aos-duration="1200">
-                <img src="https://5.imimg.com/data5/SELLER/Default/2024/10/460808897/VQ/ZB/UF/2802499/zz-500x500.jpg"
-                    alt="Two framed artworks with palm leaves and pineapples" class="w-full h-48 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
-                    data-aos="zoom-in" data-aos-duration="1400">
+            <!-- Adjusted grid for better responsiveness -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                 <!-- Use group hover for images within showcase -->
+                <div class="rounded-lg shadow-md overflow-hidden group" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                    <img src="https://www.kateandlaurel.com/cdn/shop/products/wrnsc32wzmtwdhfcsdvb.jpg?v=1679160237"
+                         alt="Interior artwork - Watermelon" class="w-full h-64 object-cover card-image">
+                </div>
+                <div class="rounded-lg shadow-md overflow-hidden group" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+                     <img src="https://c.pxhere.com/photos/56/3d/candle_close_up_dining_table_laptop_laptops_table_wooden_table-930232.jpg!s2"
+                         alt="Interior artwork - Dining setup" class="w-full h-64 object-cover card-image">
+                </div>
+                <div class="rounded-lg shadow-md overflow-hidden group" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2024/10/460808897/VQ/ZB/UF/2802499/zz-500x500.jpg"
+                         alt="Interior artwork - Framed leaves" class="w-full h-64 object-cover card-image">
+                </div>
             </div>
         </section>
 
         <!-- Subscription Form -->
-        <section class="py-12">
-            <h2 class="text-2xl font-semibold text-center mb-4" data-aos="fade-down" data-aos-duration="1000">Subscribe
-                to Our Newsletter</h2>
-            <p class="text-gray-600 text-center mb-6">Stay up-to-date with the latest news and promotions.</p>
-            <form class="max-w-md mx-auto" data-aos="zoom-in" data-aos-duration="1000">
-                <div class="mb-4">
-                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email *</label>
-                    <input type="email" id="email"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        required>
-                </div>
-                <div class="mb-6 flex items-center">
-                    <input type="checkbox" id="subscribe" class="mr-2">
-                    <label for="subscribe" class="text-gray-700 text-sm">Yes, subscribe me to your newsletter.</label>
-                </div>
-                <button
-                    class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit">
-                    Subscribe
-                </button>
-            </form>
+        <section class="py-12 md:py-16 bg-white rounded-lg shadow-lg my-12 md:my-16" data-aos="fade-up" data-aos-duration="1000">
+            <div class="max-w-xl mx-auto px-6 lg:px-0">
+                 <h2 class="text-2xl lg:text-3xl font-semibold title text-center mb-4" >Subscribe
+                     to Our Newsletter</h2>
+                 <p class="text-gray-600 text-center mb-8">Stay up-to-date with the latest news and promotions from Patel Interiors.</p>
+                 <form>
+                     <div class="mb-4">
+                         <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email *</label>
+                         <input type="email" id="email" name="email"
+                             class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-300 ease-in-out"
+                             placeholder="youremail@example.com" required>
+                     </div>
+                     <div class="mb-6 flex items-center">
+                         <input type="checkbox" id="subscribe" name="subscribe" class="mr-2 h-4 w-4 text-gray-600 focus:ring-gray-500 border-gray-300 rounded">
+                         <label for="subscribe" class="text-gray-700 text-sm">Yes, subscribe me to your newsletter.</label>
+                     </div>
+                     <div class="text-center">
+                          <button
+                             class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 shadow-md hover:shadow-lg"
+                             type="submit">
+                             Subscribe
+                          </button>
+                     </div>
+                 </form>
+            </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="bg-white py-6">
-            <div class="container mx-auto px-4 text-center">
-                <div class="mb-4">
-                    <a href="https://www.facebook.com/share/1MvhYEA1dH/" class="text-gray-600 hover:text-gray-500 mx-2"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/Susheel6744777?t=mfz0dz01fj4hjfsIcPzvJQ&s=08"
-                        class="text-gray-600 hover:text-gray-500 mx-2"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/classy___97/#" class="text-gray-600 hover:text-gray-500 mx-2"><i
-                            class="fab fa-instagram"></i></a>
-                </div>
-                <p class="text-gray-600">© 2024 ALL RIGHTS RESERVED. Powered and secured by <a
-                        href="#" class="text-gray-500 hover:underline">@patel webpages</a></p>
-            </div>
-        </footer>
-    </main>
+    </main> <!-- End Main Content -->
 
-    <script src="m.js"></script>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-4 flex justify-center space-x-6">
+                 <!-- Added target blank and rel attributes for external links -->
+                <a href="https://www.facebook.com/share/1MvhYEA1dH/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white text-xl" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/Susheel6744777?t=mfz0dz01fj4hjfsIcPzvJQ&s=08" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white text-xl" aria-label="Twitter"><i
+                        class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/classy___97/#" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white text-xl" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+            <p class="text-gray-400 text-sm">© 2024 Patel Interiors. ALL RIGHTS RESERVED.</p>
+            <p class="text-gray-500 text-xs mt-1">Powered and secured by <a
+                    href="#" class="hover:text-gray-300 underline">@patel webpages</a></p> <!-- Ensure this link is correct -->
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <!-- AOS JS (Animation on Scroll) -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init();
+        // Initialize AOS
+        AOS.init({
+            once: true, // Whether animation should happen only once - while scrolling down
+            duration: 800, // values from 0 to 3000, with step 50ms
+            easing: 'ease-in-out', // default easing for AOS animations
+        });
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = mobileMenuButton.querySelector('i'); // Get the icon inside the button
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Bonus: Change icon from bars to times (x)
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                 mobileMenuButton.setAttribute('aria-expanded', 'false');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Header Shadow on Scroll Logic
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 30) { // Reduced scroll distance for earlier effect
+                header.classList.add('shadow-lg'); // Make shadow slightly stronger
+                header.classList.remove('shadow-md');
+            } else {
+                header.classList.remove('shadow-lg');
+                header.classList.add('shadow-md');
+            }
+        });
+
+        // Close mobile menu if clicking outside of it (Optional but good UX)
+        document.addEventListener('click', function(event) {
+             const isClickInsideMenu = mobileMenu.contains(event.target);
+             const isClickOnButton = mobileMenuButton.contains(event.target);
+
+             if (!isClickInsideMenu && !isClickOnButton && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+             }
+        });
+
+         // Close mobile menu when a nav link is clicked
+         mobileMenu.querySelectorAll('a').forEach(link => {
+             link.addEventListener('click', () => {
+                 mobileMenu.classList.add('hidden');
+                 menuIcon.classList.remove('fa-times');
+                 menuIcon.classList.add('fa-bars');
+                 mobileMenuButton.setAttribute('aria-expanded', 'false');
+             });
+         });
+
     </script>
+    <!-- Tidio Chat Widget -->
     <script src="//code.tidio.co/iu2din0nhwbygob3bveuqwemgrndarcv.js" async></script>
 </body>
 
